@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>Jugadores NBA desde 1979</title>
+  <meta name="description" content="Jugadores NBA desde 1979" />
+  <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700" rel="stylesheet">
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/css/font-awesome.min.css" rel="stylesheet">
+  <link href="assets/styles/main.css" rel="stylesheet">
+  <link rel="shortcut icon" href="assets/img/favicon.png">
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-4 pt-3 left">
+        <h1 class="display-4 text-white text-right text-shadow">Jugadores NBA</h1>
+        <h2 class="display-5 text-white text-right text-shadow">desde 1979</h2>
+        <hr class="hr-white">
+        <div class="card px-3 py-2">
+          <div class="header">
+            <h2>Filtrar Resultados</h2>
+          </div>
+          <div class="body">
+            <form id="filterForm">
+              <div class="form-group">
+                <label for="filter_first">Por Nombre(s)</label>
+                <input type="text" class="form-control" id="filter_first" aria-describedby="filter_first" placeholder="Nombre Jugador">
+              </div>
+              <div class="form-group">
+                <label for="filter_last">Por Apellido(s)</label>
+                <input type="text" class="form-control" id="filter_last" aria-describedby="filter_last" placeholder="Apellido Jugador">
+              </div>
+              <div class="form-group">
+                <label for="filter_position">Por Posicion</label>
+                <input type="text" class="form-control" id="filter_position" aria-describedby="filter_position" placeholder="G, C, F, etc...">
+              </div>
+              <div class="form-group">
+                <label for="filter_team">Por Equipo</label>
+                <input type="text" class="form-control" id="filter_team" aria-describedby="filter_team" placeholder="Pacers, Knicks, Grizzlies, Thunder, etc...">
+              </div>
+              <div class="form-group">
+                <label for="filter_conference">Por Conferencia</label>
+                <input type="text" class="form-control" id="filter_conference" aria-describedby="filter_conference" placeholder="East, West, etc...">
+              </div>
+              <div class="form-group">
+                <label for="filter_division">Por Division</label>
+                <input type="text" class="form-control" id="filter_division" aria-describedby="filter_division" placeholder="Central, Atlantic, Southwest, etc...">
+              </div>
+              <button type="button" class="btn btn-warning btn-clear">Limpiar</button>
+              <button class="btn btn-primary">Filtrar</button>
+              <hr>
+              <p class="muted"><small>IMPORTANTE: <b>Solo los Jugadores que han sido previamente buscados pueden ser filtrados</b></small></p>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-8 pt-3 right">
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col" colspan="10">
+                  <nav aria-label="Navegacion Tabla"></nav>
+                </th>
+              </tr>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col"></th>
+                <th scope="col">Nombre(s)</th>
+                <th scope="col">Apellido(s)</th>
+                <th scope="col">Altura</th>
+                <th scope="col">Peso</th>
+                <th scope="col">Posicion</th>
+                <th scope="col">Equipo</th>
+                <th scope="col">Conferencia</th>
+                <th scope="col">Division</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td colspan="10">
+                  Cargando datos...
+                </td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td colspan="10">
+                  <button class="btn btn-primary float-right" data-toggle="modal" data-target="#playerModal" data-id="">
+                    Agregar Nuevo
+                  </button>
+                  <nav aria-label="Navegacion Tabla"></nav>
+                </td>
+              </tr>
+            </tfoot>
+          </table>
+          <p>Fuente: <a href="http://www.balldontlie.io/#introduction" target="_blank">balldontlie.io</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal -->
+  <div class="modal fade" id="playerModal" tabindex="-1" role="dialog" aria-labelledby="playerModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <form id="playerForm">
+          <input type="hidden" id="player_id">
+          <div class="modal-header">
+            <h5 class="modal-title text-info" id="playerModalLabel">Jugador</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-sm-9">
+                <h5 class="text-primary">Editar Detalles <small>(* campos obligatorios)</small></h5>
+                <div class="form-group row">
+                  <label for="player_first_name" class="col-sm-2 col-form-label">Nombre(s)*</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="player_first_name" placeholder="Nombre(s) Jugador" required>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="player_last_name" class="col-sm-2 col-form-label">Apellido(s)*</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="player_last_name" placeholder="Apellido(s) Jugador" required>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="player_feets" class="col-sm-2 col-form-label">Altura</label>
+                  <div class="col-sm-5">
+                    <input type="number" class="form-control" id="player_feets" placeholder="Altura (Pies) Jugador">
+                  </div>
+                  <div class="col-sm-5">
+                    <input type="number" class="form-control" id="player_inches" placeholder="Altura (Pulgadas) Jugador">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="player_weight" class="col-sm-2 col-form-label">Peso</label>
+                  <div class="col-sm-10">
+                    <input type="number" class="form-control" id="player_weight" placeholder="Peso (Libras) Jugador">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="player_position" class="col-sm-2 col-form-label">Posicion</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="player_position" placeholder="Posicion Jugador">
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-3">
+                <h5 class="text-primary">Equipo</h5>
+                <div id="teamDetails"></div>
+              </div>
+            </div>
+
+          </div>
+          <div class="modal-footer">
+            <div class="container-fluid p-0">
+              <div class="row">
+                <div class="col-sm-6">
+                  <button type="button" class="btn btn-danger" data-confirm="false">Eliminar</button>
+                </div>
+                <div class="col-sm-6 text-right">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                  <button class="btn btn-primary">Guardar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!--  -->
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+
+</html>
